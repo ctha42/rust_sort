@@ -41,13 +41,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn parse_input(input: String, len: usize) -> Vec<isize>{
+fn parse_input(input: String, len: usize) -> Vec<i32>{
     let mut vec = Vec::new();
     let mut iter = input.split(|c| c == ',' || c == ' ');
 
     for _ in 0..len {
         if let Some(num_str) = iter.next() {
-            if let Ok(num) = num_str.trim().parse::<isize>(){
+            if let Ok(num) = num_str.trim().parse::<i32>(){
                 vec.push(num);
             }
         } 
@@ -57,14 +57,14 @@ fn parse_input(input: String, len: usize) -> Vec<isize>{
     }
 
     for num_str in iter {
-        if let Ok(num) = num_str.trim().parse::<isize>(){
+        if let Ok(num) = num_str.trim().parse::<i32>(){
             vec.push(num);
         }
     }
     vec
 }
 
-fn quick_sort(vec: &mut Vec<isize>, dec: bool) -> Vec<isize> {
+fn quick_sort(vec: &mut Vec<i32>, dec: bool) -> Vec<i32> {
     
     if vec.len() <= 1 {
         return vec.to_vec();
