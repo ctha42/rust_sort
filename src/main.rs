@@ -83,9 +83,16 @@ fn quick_sort(vec: &mut Vec<isize>, dec: bool) -> Vec<isize> {
     }
 
     let mut sorted = vec![];
-    sorted.extend(quick_sort(&mut left, dec));
-    sorted.push(pivot);
-    sorted.extend(quick_sort(&mut right, dec));
     
+    if dec{
+        sorted.extend(quick_sort(&mut right, dec));
+        sorted.push(pivot);
+        sorted.extend(quick_sort(&mut left, dec));
+    }
+    else{
+        sorted.extend(quick_sort(&mut left, dec));
+        sorted.push(pivot);
+        sorted.extend(quick_sort(&mut right, dec));
+    }
     sorted
 }
