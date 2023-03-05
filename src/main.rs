@@ -27,7 +27,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     let input = fs::read_to_string(args.file)?;
-    let length = input.len() as isize;
+    let length = input.len();
     let mut unsorted_nums = parse_input(input, length);
 
     let nums = quick_sort(&mut unsorted_nums, args.decending);
@@ -41,7 +41,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn parse_input(input: String, len: isize) -> Vec<isize>{
+fn parse_input(input: String, len: usize) -> Vec<isize>{
     let mut vec = Vec::new();
     let mut iter = input.split(|c| c == ',' || c == ' ');
 
