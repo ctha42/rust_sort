@@ -33,8 +33,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut file = File::create(args.output)?;
 
-    for i in &nums {
-        write!(file, "{}, ", i)?;
+    for (i, num) in nums.iter().enumerate() {
+        if i == nums.len() - 1 {
+            write!(file, "{}", num)?;
+        } else {
+            write!(file, "{}, ", num)?;
+        }
     }
 
     Ok(())
